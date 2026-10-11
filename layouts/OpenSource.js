@@ -139,7 +139,17 @@ export default function OpenSource({ data }) {
               <h2>Meet Taskautomation.</h2>
               <p>A self-hosted project management and team collaboration platform for teams that want to organize work while keeping control of their own data and infrastructure.</p>
             </div>
-            <span className="opensource-project-badge"><Icon name="server" size={16} /> Self-hosted</span>
+            <div className="opensource-project-actions">
+              <a
+                className="btn btn-secondary opensource-github-link"
+                href="https://github.com/pushpinder6805/Taskautomation"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View source on GitHub <Icon size={16} />
+              </a>
+              <span className="opensource-project-badge"><Icon name="server" size={16} /> Self-hosted</span>
+            </div>
           </div>
           <div className="opensource-feature-grid">
             {capabilities.map((feature, index) => (
