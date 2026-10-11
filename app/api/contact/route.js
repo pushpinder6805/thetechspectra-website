@@ -100,7 +100,14 @@ export async function POST(request) {
       // Upgrade the plaintext SMTP connection with STARTTLS before sending
       // mailbox credentials. Port 465 uses implicit TLS instead.
       requireTLS: SMTP_PORT !== 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      auth: {
+        user: SMTP_USER,
+        // Google displays App Passwords in groups separated by spaces.
+        pass:
+          SMTP_HOST === "smtp.gmail.com"
+            ? SMTP_PASS.replace(/\s/g, "")
+            : SMTP_PASS,
+      },
       connectionTimeout: 4_000,
       greetingTimeout: 4_000,
       socketTimeout: 8_000,
