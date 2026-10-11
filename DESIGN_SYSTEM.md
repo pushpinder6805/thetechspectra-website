@@ -1,6 +1,6 @@
 # TheTechSpectra design system
 
-The redesign preserves Next.js App Router routes, Markdown content loading, blog pagination, configured navigation, pricing values, social links, and the contact form’s POST action. No backend or submission service is introduced.
+The redesign preserves Next.js App Router content loading, blog pagination, social links, and the contact form’s POST action. The former pricing page has been replaced with an AI integration page, and `/pricing` redirects there to keep old links useful.
 
 ## Foundation
 
@@ -18,7 +18,7 @@ The redesign preserves Next.js App Router routes, Markdown content loading, blog
 - `Logo`, `Icon`, `Header`, `Footer`, `Cta`, and `Pagination` are shared components.
 - Buttons: `.btn` with `.btn-primary`, `.btn-secondary`, `.btn-outline-primary`, or `.btn-light`.
 - Fields: `.form-input`, `.form-textarea`, semantic labels, native required/email validation, and visible focus treatment.
-- Surfaces: `.panel`, `.service-card`, `.pricing-card`, `.blog-card`, and `.expertise-card`.
+- Surfaces: `.panel`, `.service-card`, `.blog-card`, `.expertise-card`, and the AI integration page’s provider and workflow cards.
 - Content: `.eyebrow`, `.section-heading`, `.page-heading`, `.icon-tile`, and `.text-link`.
 - States: `.empty-state`, `.skeleton`, `.alert`, and `.badge`; `app/loading.js` provides route loading feedback.
 - Supporting patterns: `.tabs`, native `dialog`, native `details` dropdowns/accordions, accessible tooltip selectors, and scrollable prose tables.
@@ -27,7 +27,7 @@ Use actual controls only when the experience needs them. The site does not add i
 
 ## Content editing
 
-Homepage copy and service data live in `content/_index.md`. Existing engineering benefits are retained in its `principles` block. Pricing data and FAQ questions remain in their original content files. Placeholder FAQ answers are replaced with project guidance that avoids inventing commercial policies; additional questions cover existing products, timelines, and SaaS integrations. The navigation and footer remain driven by `config/menu.json`.
+Homepage copy and service data live in `content/_index.md`. Existing engineering benefits are retained in its `principles` block. AI integration page copy lives in `content/ai-integration.md`; its page layout presents capabilities, provider options, and illustrative workflows. FAQ questions remain in their content file. Placeholder FAQ answers are replaced with project guidance that avoids inventing commercial policies; additional questions cover existing products, timelines, and SaaS integrations. The navigation and footer remain driven by `config/menu.json`.
 
 ## Contact configuration
 
@@ -35,7 +35,7 @@ Set `config.params.contact_form_action` to a real form submission endpoint befor
 
 ## Verification
 
-Run `npm install`, `npm run build`, and `npm run start`. Check the homepage, contact, pricing, FAQ, blog listing, paginated listing, all five articles, content elements, and the not-found page. Responsive QA covers 375px, 768px, 1024px, and 1440px widths. Keyboard checks cover the mobile menu, Escape dismissal, FAQ expansion, form validation, and reduced motion. The completed implementation passed 48 page/viewport checks and 12 automated WCAG A/AA audits across representative pages at mobile and desktop widths, with no reported violations. Pagination navigation was also checked. Submit a message only after configuring a real endpoint.
+Run `npm install`, `npm run build`, and `npm run start`. Check the homepage, contact, AI integration, FAQ, blog listing, paginated listing, articles, content elements, and the not-found page. Responsive QA should cover 375px, 768px, 1024px, and 1440px widths. Keyboard checks cover the mobile menu, Escape dismissal, FAQ expansion, form validation, and reduced motion. The AI page’s provider marks and illustrative workflow are presentation examples; model access is selected for each project.
 
 ## Editorial library
 

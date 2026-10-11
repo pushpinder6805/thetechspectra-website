@@ -40,7 +40,7 @@
 - 📞 Contact Page
 - 📄 Features Page
 - ❓ FAQ Page
-- 💰 Pricing Page
+- 🤖 AI Integration Services
 - 🔒 Privacy Policy Page
 - 🔒 Terms and Condition Page
 
@@ -112,4 +112,3 @@ If you need to customize the theme or complete website development from scratch,
 <img src="https://demo.gethugothemes.com/thumbnails/bookworm.png" height="300" width="400"/>
 <p>Bookworm Light Nextjs</p>
 </a>
-

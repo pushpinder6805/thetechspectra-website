@@ -19,6 +19,11 @@ const nextConfig = {
         destination: "/images/favicon.png",
         permanent: true,
       },
+      {
+        source: "/pricing",
+        destination: "/ai-integration",
+        permanent: true,
+      },
     ];
   },
 };
