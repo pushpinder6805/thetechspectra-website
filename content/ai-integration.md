@@ -1,3 +1,4 @@
+---
 title: AI integration for your business
 meta_title: AI Integration, Agents & Automation | The Tech Spectra
 description: Bring AI into your business, software, and workflows. We build AI agents, assistants, automations, and integrations around the way you work.
@@ -10,3 +11,4 @@ call_to_action:
     enable: true
     label: Talk about your project
     link: /contact
+---
