@@ -19,7 +19,7 @@
     "link": "/contact"
   },
   "params": {
-    "contact_form_action": "",
+    "contact_form_action": "/api/contact",
     "tag_manager_id": "",
     "footer_content": "The software of your thoughts.",
     "copyright": "Designed and Developed By [Thetechspectra](https://thetechspectra.com/)"

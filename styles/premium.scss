@@ -2362,3 +2362,29 @@ dialog[open] {
     min-height: 0;
   }
 }
+
+.contact-form button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+.contact-notice {
+  min-height: 1.5em;
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.contact-notice-success {
+  color: #176b46;
+}
+.contact-notice-error {
+  color: #a53829;
+}
+.contact-honeypot {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
