@@ -4,6 +4,7 @@ import theme from "@config/theme.json";
 import Footer from "@layouts/partials/Footer";
 import Header from "@layouts/partials/Header";
 import Providers from "@layouts/partials/Providers";
+import { Analytics } from "@vercel/analytics/next";
 import "../styles/style.scss";
 
 export const metadata = {
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
           <Providers>{children}</Providers>
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
