@@ -19,8 +19,21 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.message);
+      const body = await response.text();
+      let result;
+      try {
+        result = JSON.parse(body);
+      } catch {
+        // Proxies and hosting platforms can return an HTML error page instead
+        // of the JSON response from the contact API.
+        result = null;
+      }
+      if (!response.ok || !result || typeof result.message !== "string") {
+        throw new Error(
+          result?.message ||
+            "We couldn't reach the email service. Please try again in a moment.",
+        );
+      }
       form.reset();
       setStatus("success");
       setNotice(result.message);

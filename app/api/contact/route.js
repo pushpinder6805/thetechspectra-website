@@ -101,9 +101,9 @@ export async function POST(request) {
       // mailbox credentials. Port 465 uses implicit TLS instead.
       requireTLS: SMTP_PORT !== 465,
       auth: { user: SMTP_USER, pass: SMTP_PASS },
-      connectionTimeout: 10_000,
-      greetingTimeout: 10_000,
-      socketTimeout: 15_000,
+      connectionTimeout: 4_000,
+      greetingTimeout: 4_000,
+      socketTimeout: 8_000,
     });
 
     await transporter.sendMail({
