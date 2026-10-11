@@ -27,7 +27,7 @@ Use actual controls only when the experience needs them. The site does not add i
 
 ## Content editing
 
-Homepage copy and service data live in `content/_index.md`. Existing engineering benefits are retained in its `principles` block. AI integration page copy lives in `content/ai-integration.md`; its page layout presents capabilities, provider options, and illustrative workflows. FAQ questions remain in their content file. Placeholder FAQ answers are replaced with project guidance that avoids inventing commercial policies; additional questions cover existing products, timelines, and SaaS integrations. The navigation and footer remain driven by `config/menu.json`.
+Homepage copy and service data live in `content/_index.md`. Existing engineering benefits are retained in its `principles` block. AI integration page copy lives in `content/ai-integration.md`; its page layout presents capabilities, provider options, and illustrative workflows. The Open Source page uses `content/open-source.md` and `layouts/OpenSource.js` to present Taskautomation as in development, including a clearly illustrative project board and self-hosting overview. FAQ questions remain in their content file. Placeholder FAQ answers are replaced with project guidance that avoids inventing commercial policies; additional questions cover existing products, timelines, and SaaS integrations. The navigation and footer remain driven by `config/menu.json`.
 
 ## Contact configuration
 
@@ -35,7 +35,7 @@ Set `config.params.contact_form_action` to a real form submission endpoint befor
 
 ## Verification
 
-Run `npm install`, `npm run build`, and `npm run start`. Check the homepage, contact, AI integration, FAQ, blog listing, paginated listing, articles, content elements, and the not-found page. Responsive QA should cover 375px, 768px, 1024px, and 1440px widths. Keyboard checks cover the mobile menu, Escape dismissal, FAQ expansion, form validation, and reduced motion. The AI page’s provider marks and illustrative workflow are presentation examples; model access is selected for each project.
+Run `npm install`, `npm run build`, and `npm run start`. Check the homepage, contact, AI integration, Open Source, FAQ, blog listing, paginated listing, articles, content elements, and the not-found page. Responsive QA should cover 375px, 768px, 1024px, and 1440px widths. Keyboard checks cover the mobile menu, Escape dismissal, FAQ expansion, form validation, and reduced motion. AI provider marks, the AI workflow, and Taskautomation screenshots/diagrams are presentation illustrations; model access and project release status are selected per project.
 
 ## Editorial library
 

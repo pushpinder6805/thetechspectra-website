@@ -3,6 +3,7 @@ import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
 import Faq from "@layouts/Faq";
 import AIIntegration from "@layouts/AIIntegration";
+import OpenSource from "@layouts/OpenSource";
 import SeoMeta from "@layouts/SeoMeta";
 import { getRegularPage, getSinglePage } from "@lib/contentParser";
 
@@ -30,6 +31,8 @@ const RegularPages = async ({ params }) => {
         <Contact data={regularPageData} />
       ) : layout === "ai-integration" ? (
         <AIIntegration data={regularPageData} />
+      ) : layout === "open-source" ? (
+        <OpenSource data={regularPageData} />
       ) : layout === "faq" ? (
         <Faq data={regularPageData} />
       ) : (

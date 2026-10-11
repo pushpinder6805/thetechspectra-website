@@ -41,6 +41,8 @@
 - 📄 Features Page
 - ❓ FAQ Page
 - 🤖 AI Integration Services
+- 🌱 Open Source Projects
+- 🗂️ Taskautomation Project Preview
 - 🔒 Privacy Policy Page
 - 🔒 Terms and Condition Page
 

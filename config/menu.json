@@ -13,6 +13,10 @@
       "url": "/ai-integration"
     },
     {
+      "name": "Open Source",
+      "url": "/open-source"
+    },
+    {
       "name": "Contact",
       "url": "/contact"
     },
@@ -28,6 +32,10 @@
         {
           "text": "AI Integration",
           "url": "/ai-integration"
+        },
+        {
+          "text": "Open Source",
+          "url": "/open-source"
         },
         {
           "text": "Quick Start",
@@ -49,6 +57,10 @@
         {
           "text": "AI Integration",
           "url": "/ai-integration"
+        },
+        {
+          "text": "Open Source",
+          "url": "/open-source"
         }
       ]
     },
