@@ -1,3 +1,7 @@
+import nodemailer from "nodemailer";
+
+export const runtime = "nodejs";
+
 const json = (message, status) => Response.json({ message }, { status });
 const escapeHtml = (value) =>
   value.replace(
@@ -59,10 +63,19 @@ export async function POST(request) {
   if (message.length > 5000)
     return json("Keep your project details under 5,000 characters.", 400);
 
-  const { RESEND_API_KEY, CONTACT_TO, CONTACT_FROM } = process.env;
-  if (!RESEND_API_KEY || !CONTACT_TO || !CONTACT_FROM) {
+  const { SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_TO } = process.env;
+  const SMTP_PORT = Number(process.env.SMTP_PORT || 26);
+  if (
+    !SMTP_HOST ||
+    !SMTP_USER ||
+    !SMTP_PASS ||
+    !CONTACT_TO ||
+    !Number.isInteger(SMTP_PORT) ||
+    SMTP_PORT < 1 ||
+    SMTP_PORT > 65535
+  ) {
     console.error(
-      "Contact email is not configured. Set RESEND_API_KEY, CONTACT_TO, and CONTACT_FROM.",
+      "Contact email is not configured. Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and CONTACT_TO.",
     );
     return json(
       "The contact form is still being set up. Please try again later.",
@@ -80,40 +93,38 @@ export async function POST(request) {
   const html = `<h2>New website enquiry</h2><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Subject:</strong> ${escapeHtml(subject)}</p><p><strong>Project details:</strong></p><p style="white-space:pre-wrap">${escapeHtml(message || "No additional project details provided.")}</p>`;
 
   try {
-    const delivery = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: CONTACT_FROM,
-        to: [CONTACT_TO],
-        reply_to: email,
-        subject: `Website enquiry: ${subject}`,
-        text,
-        html,
-      }),
-      signal: AbortSignal.timeout(10_000),
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      // Upgrade the plaintext SMTP connection with STARTTLS before sending
+      // mailbox credentials. Port 465 uses implicit TLS instead.
+      requireTLS: SMTP_PORT !== 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
     });
 
-    if (!delivery.ok) {
-      console.error(
-        "Contact email provider rejected a message. HTTP status:",
-        delivery.status,
-      );
-      return json(
-        "We couldn't send your message right now. Please try again in a moment.",
-        502,
-      );
-    }
+    await transporter.sendMail({
+      from: SMTP_USER,
+      to: CONTACT_TO,
+      replyTo: email,
+      subject: `Website enquiry: ${subject}`,
+      text,
+      html,
+    });
 
     return json(
       "Thanks for reaching out. Your message has been sent successfully.",
       200,
     );
-  } catch {
-    console.error("Contact email provider could not be reached.");
+  } catch (error) {
+    // Log only error classification; SMTP errors can contain provider details.
+    console.error("Contact email SMTP delivery failed.", {
+      code: typeof error?.code === "string" ? error.code : "UNKNOWN",
+      command: typeof error?.command === "string" ? error.command : undefined,
+    });
     return json(
       "We couldn't send your message right now. Please try again in a moment.",
       502,
