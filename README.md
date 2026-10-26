@@ -19,7 +19,7 @@
     <img src="https://img.shields.io/github/contributors/themefisher/bigspring-light-nextjs" alt="contributors"></a>
 </p>
 
-![bigspring-light](https://demo.gethugothemes.com/thumbnails/bigspring-light.png)
+![Project Architecture Diagram](121.png)
 
 ## 🔑Key Features
 
